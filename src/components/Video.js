@@ -1,4 +1,5 @@
 import "./Video.css";
+
 function Video({
   title,
   id,
@@ -8,6 +9,8 @@ function Video({
   verified,
   children,
 }) {
+  console.log("render Video");
+
   return (
     <>
       <div className="container">
