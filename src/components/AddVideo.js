@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import "./AddVideo.css";
+import { useEffect, useState } from "react";
 
 const initialState = {
   time: "1 month ago",
@@ -9,22 +9,20 @@ const initialState = {
   views: "",
 };
 
-function AddVideo({ addVideos, updateVideo, editableVideo }) {
+function AddVideo({ dispatch, editableVideo }) {
   const [video, setVideo] = useState(initialState);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (editableVideo) {
-      updateVideo(video);
+      dispatch({ type: "UPDATE", payload: video });
     } else {
-      addVideos(video);
+      dispatch({ type: "ADD", payload: video });
     }
 
     setVideo(initialState);
-    console.log(video);
   }
-
   function handleChange(e) {
-    console.log(e.target.value, e.target.name);
     setVideo({ ...video, [e.target.name]: e.target.value });
   }
 

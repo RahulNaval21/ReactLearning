@@ -1,7 +1,7 @@
 import Video from "./Video";
 import PlayButton from "./PlayButton";
-import Counter from "./Counter";
-function VideoList({ videos, deleteVideo, editVideo }) {
+
+function VideoList({ videos, dispatch, editVideo }) {
   return (
     <>
       {videos.map((video) => (
@@ -13,8 +13,8 @@ function VideoList({ videos, deleteVideo, editVideo }) {
           channel={video.channel}
           verified={video.verified}
           id={video.id}
-          deleteVideo={deleteVideo}
           editVideo={editVideo}
+          dispatch={dispatch}
         >
           <PlayButton
             onPlay={() => console.log("Playing..", video.title)}
@@ -24,8 +24,6 @@ function VideoList({ videos, deleteVideo, editVideo }) {
           </PlayButton>
         </Video>
       ))}
-
-      <Counter></Counter>
     </>
   );
 }
